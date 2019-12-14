@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body class="grey darken-3" style="background-image:url(img/asfalt-light.png); font-family: 'Acme', sans-serif;">
+    <div id="vue" class="center">
+
+        <header>
+            <div class="navbar-fixed" id="inicio">
+                <nav class="grey darken-4">
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo center red-text"><b>N</b><img src="img/youtuv.png" height="60px"
+                                class="left"></a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i
+                                class="material-icons">menu</i></a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                            <li><a href="#inicio"><i class="material-icons left white-text">home</i>Inicio</a></li>
+                            <li><a href="#peliculas"><i class="material-icons left white-text">ondemand_video</i>
+                                    Peliculas</a></li>
+                            <li><a href="#registro"><i class="material-icons left white-text">person_add</i>
+                                    Registrate</a></li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <ul id="slide-out" class="sidenav grey darken-4">
+                <li>
+                    <div class="user-view">
+                        <div class="background red">
+                            <img src="" class="responsive-img">
+                        </div>
+                        <a href="#user"><img class="circle" src="img/youtuv.png">
+                            <h4 class="white-text">NETFLOX</h4>
+                        </a>
+
+
+                    </div>
+                </li>
+                <li><a href="#inicio" class="white-text"><i class="material-icons left white-text">home</i> Inicio</a>
+                </li>
+                <li><a href="#peliculas" class="white-text"><i class="material-icons left white-text">ondemand_video</i>
+                        Peliculas</a></li>
+                <li><a href="#registro" class="white-text"><i class="material-icons left white-text">person_add</i>
+                        Registrate</a></li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a class="subheader white-text">Desarrolladores: </a></li>
+                <li><a class="waves-effect white-text" href="#!"> Constanza Santander</a></li>
+                <li><a class="waves-effect white-text" href="#!">Olayer Monsalves</a></li>
+            </ul>
+
+
+
+        </header>
+
+        <main>
+            <h1 class="red-text"> <b>NETFLOX</b></h1>
+            <div class="slider hide-on-med-and-down">
+                <ul class="slides">
+                    <li>
+                        <img src="img/banner_1.jpg" style="height: 500px;"> <!-- random image -->
+
+                    </li>
+                    <li>
+                        <img src="img/banner_2.jpg"> <!-- random image -->
+
+                    </li>
+                    <li>
+                        <img src="img/banner_3.jpg"> <!-- random image -->
+
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="row">
+                <br id="peliculas">
+                <hr class="black" style=" outline-color: black; border-color: black; height: 1px;">
+                <h3 class="white-text">Peliculas Populares</h3>
+
+                <ul>
+                    <div class="row">
+                        <li v-for="item in users">
+
+                            <div class="col hide-on-med-and-down" style="width: 20%;">
+
+                                <div class="card-panel black white-text"
+                                    style="border-radius: 10px; opacity: 70%; height: 420px; ">
+                                    <img :src="url_imagen + item.poster_path" class="  z-depth-3"
+                                        style="height: 300px;"> <br>
+                                    <div style="height: 20px;">
+                                        <h6></h6>{{item.title}} </h6> <br>
+                                        <div>
+                                            <button @click="ver_modal(item)" class="btn  blue"
+                                                style="margin-top: 5px; text-transform: none;"><i
+                                                    class="material-icons right"> visibility</i><b> Ver
+                                                    Informacion</b></button>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                            <div class="col m3 s6 hide-on-large-only">
+                                <div class="card-panel black white-text"
+                                    style="border-radius: 10px; opacity: 70%; height: 380px;">
+                                    <div>
+                                        <button @click="ver_modal(item)" class="btn  blue right "
+                                            style="margin-bottom: 15px;"><i class="material-icons center">
+                                                visibility</i></button>
+                                    </div>
+                                    <img :src="url_imagen + item.poster_path" height="250" class=" z-depth-3"> <br>
+
+                                    <h8>{{item.title}} </h8>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                        </li>
+                    </div>
+
+                </ul>
+
+
+                <hr  id="registro"  class="black" style=" outline-color: black; border-color: black; height: 1px;">
+
+
+
+
+            </div>
+
+            <div  class="card-panel center red white-text"
+                style="margin: 10px; border-radius: 10px; margin-bottom: 40px; margin-top: 40px; opacity: 80%;">
+                <div class="row">
+                    <div class="col l6 m12 hide-on-small-only">
+                        <h4><b>Se Parte de Nuestra Comunidad!</b></h4>
+                        <img src="img/pelis.webp" style="border-radius: 10px;" class="responsive-img">
+                        <p class="white-text">Registrate con nosotros y obten instantaneamente 10 suscripciones no
+                            deseadas a tu correo!</p>
+                    </div>
+
+                    <div class="col l6 m12 s12 white-text section scrollspy">
+                        <h4><b>Registrate Aqui</b></h4>
+                        <hr>
+                        <div class="row white-text center">
+                            <div class="input-field col l12 m12 s12 white-text">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_telephone" type="text" class="validate ">
+                                <label for="icon_telephone" class="white-text">Nombre de Usuario</label>
+                            </div>
+                            <div class="input-field col l12 m12 s12 white-text">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="icon_telephone" type="password" class="validate">
+                                <label for="icon_telephone" class="white-text">Contraseña</label>
+                            </div>
+                            <div class="input-field col l12 m12 s12 white-text">
+                                <i class="material-icons prefix">email</i>
+                                <input id="icon_telephone" type="email" class="validate">
+                                <label for="icon_telephone" class="white-text">Correo</label>
+                            <br><br><br>
+                            </div>
+                            
+                            <a class="waves-effect waves-light btn white red-text"><b>Registrarse</b> </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="modal1" class="modal black" style="opacity: 80%;">
+                <div v-if="usuario !=null">
+                    <div class="modal-content white-text">
+
+                        <h3>{{usuario.title}}</h3> <br>
+                        <h6>Puntuacion: {{usuario.vote_average}}</h6>
+                        <h6>Fecha de Estreno: {{usuario.release_date}}</h6><br> <br>
+
+                        <h6>Descripcion:</h6>
+                        <p>{{usuario.overview}}</p>
+                    </div>
+                    <div class="modal-footer black white-text">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">OK</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </main>
+        <div class="fixed-action-btn">
+            <a href="#inicio" class="btn-floating btn-large red">
+                <i class="large material-icons">arrow_upward</i>
+            </a>
+        </div>
+        <footer class="page-footer black white-text " style="background-image: url(img/paper.png);">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Mas servicios</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!"> <i
+                                        class="material-icons left">attach_money</i>Donaciones</a></li> <br>
+                            <li><a class="grey-text text-lighten-3" href="#!"> <i
+                                        class="material-icons left">call</i>Contacto: 555-NoNoseLlama</a></li> <br>
+                            <li><a class="grey-text text-lighten-3" href="#!"> <i
+                                        class="material-icons left">headset_mic</i>Asistencia (no tenemos pero se ve
+                                    lindo) </a></li> <br>
+
+                        </ul>
+                    </div>
+
+                    <div class="col l4 offset-l2 s12">
+
+                        <hr class="hide-on-large-only">
+                        <h5 class="white-text">Otros Sitios</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!"> <i
+                                        class="material-icons left">check</i>yutuv.com</a></li> <br>
+                            <li><a class="grey-text text-lighten-3" href="#!"> <i
+                                        class="material-icons left">check</i>gugle.com</a></li> <br>
+                            <li><a class="grey-text text-lighten-3" href="#!"> <i
+                                        class="material-icons left">check</i>caralibro.com</a></li> <br>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <div class="container">
+                    <span class="left">Desarrolladores: Constanza Santander - Olayer Monsalves</span><br
+                        class="hide-on-large-only">
+
+                    © Cualquier parecido con otras paginas de pago es mera coincidencia <br class="hide-on-large-only">
+                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#vue',
+            data: {
+                users: [],
+                url: 'https://api.themoviedb.org/3/movie/popular?api_key=7e38bf7d7727f2c0ac63b558261d8d19&language=es-ES&page=1',
+                url_imagen: "https://image.tmdb.org/t/p/w500",
+                usuario: null
+            },
+            methods: {
+                async cargar() {
+                    var resultado = await axios.get(this.url);
+                    this.users = resultado.data.results;
+                    console.log(resultado.data);
+                },
+                ver_modal(item) {
+                    this.usuario = item;
+                    var instance = M.Modal.getInstance(document.getElementById('modal1'));
+                    instance.open();
+                }
+
+            },
+
+            created() {
+                this.cargar();
+            },
+            mounted() {
+                document.addEventListener('DOMContentLoaded', function () {
+                    var elems = document.querySelectorAll('.modal');
+                    var instances = M.Modal.init(elems);
+                });
+            }
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidenav = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(sidenav);
+            var nav = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(nav);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var slider = document.querySelectorAll('.slider');
+            var instances = M.Slider.init(slider, { height: 500 });
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
+
+
+</body>
+
+</html>
